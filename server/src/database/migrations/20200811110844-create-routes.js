@@ -9,10 +9,6 @@ module.exports = {
         primaryKey: true,
         autoIncrement: true
       },
-      start_point: {
-        type: Sequelize.GEOGRAPHY('POINT'),
-        allowNull: false,
-      },
       created_at: {
         type: Sequelize.DATE,
         allowNull: false,

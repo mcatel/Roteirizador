@@ -1,46 +1,57 @@
-import React, { useState } from 'react';
-import { FaPlus, FaRoad } from 'react-icons/fa';
-import Input from '../../components/Input';
+import React, { useEffect, useState } from 'react';
+import Form from '../../components/Form';
 import Map from '../../components/Map';
 import './styles.css';
 
 function RouterContainer() {
-    const [isRouted, setIsRouted] = useState(false);
+    const [latitude, setLatitude] = useState('');
+    const [longitude, setLongitude] = useState('');
+    const [globalMap, setMap] = useState("");
+    const [coordinates, setCoordinates] = React.useState([]);
+    const [propsRoute, setpropsRoute] = React.useState({});
+    const isRouted = false;
+
+    useEffect(() => {
+
+        navigator.geolocation.getCurrentPosition(position => {
+            const { latitude, longitude } = position.coords;
+
+            setLatitude(latitude);
+            setLongitude(longitude);
+        }, err => {
+            console.log(err);
+        }, { timeout: 30000 });
+
+    }, []);
 
     return (
         <div id="router-container">
 
-            <div className="route-block">
-                <div className="form-container">
-
-                    <Input name="origem" label="Origem" />
-                    <Input name="parada" label="Parada" />
-
-                    <div className="buttons-container">
-                        <button className="button-router">
-                            <FaRoad className="button-router-icon" />
-                            Roteirizar
-                        </button>
-
-                        <button className="button-add">
-                            <FaPlus />
-                        </button>
-                    </div>
-
-                </div>
+            <header>
+                <Form
+                    coordinates={coordinates}
+                    setCoordinates={setCoordinates}
+                    propsRoute={propsRoute}
+                    map={globalMap}
+                    setMap={setMap}
+                    setpropsRoute={setpropsRoute}
+                />
 
                 {isRouted &&
 
-                    <div className="stats-container">
+                    <footer>
                         <p>Distância: 2 Km</p>
                         <p>Tempo estimado: 6 minutos</p>
-                    </div>
+                    </footer>
                 }
-            </div>
+            </header>
 
-            <div className="map-container">
-                <Map />
-            </div>
+            <main>
+                <Map
+                    latitude={latitude}
+                    longitude={longitude}
+                />
+            </main>
         </div>
     );
 }

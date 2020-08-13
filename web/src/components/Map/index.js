@@ -3,15 +3,16 @@ import { GoogleMap, withScriptjs, withGoogleMap } from 'react-google-maps';
 
 import './styles.css';
 
-function Map() {
+function Map(props) {
+    const { latitude, longitude } = props;
 
     function MapComponent() {
         return (
             <GoogleMap
-                defaultZoom={10}
+                defaultZoom={14}
                 defaultCenter={{
-                    lat: -29.201490,
-                    lng: -51.238480
+                    lat: latitude,
+                    lng: longitude
                 }}
             />
         )
@@ -21,7 +22,7 @@ function Map() {
 
     return (
         <WrappedMap
-            googleMapURL={"https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"}
+            googleMapURL={"https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing"}
             loadingElement={<div className="map-element" />}
             containerElement={<div className="map-element" />}
             mapElement={<div className="map-element" />}
