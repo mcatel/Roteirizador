@@ -2,20 +2,14 @@ import api from './api';
 
 async function saveRoute(coordinates) {
 
-    const { id } = await api.post("routes");
-
-    await api.post("stops", {
-        route_id: id,
-        stop_point: {
-            type: "point",
-            coordinates: [
-                coordinates.latitude,
-                coordinates.longitude
-            ]
-        }
+    await api.post("routes", {
+        coordinates: coordinates.map(coordinate => ({
+            longitude: coordinate.lat,
+            latitude: coordinate.lng
+        }))
     }).then(response => {
         console.log(response);
-        alert("Rota cadastrada com sucesso");
+        //alert("Rota cadastrada com sucesso");
     }).catch(err => {
         console.log(err);
         alert("Erro ao cadastrar rota");

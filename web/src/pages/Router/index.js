@@ -6,10 +6,9 @@ import './styles.css';
 function RouterContainer() {
     const [latitude, setLatitude] = useState('');
     const [longitude, setLongitude] = useState('');
-    const [globalMap, setMap] = useState("");
+    const [googleMap, setGoogleMap] = useState('');
     const [coordinates, setCoordinates] = React.useState([]);
-    const [propsRoute, setpropsRoute] = React.useState({});
-    const isRouted = false;
+    const [routeData, setRouteData] = React.useState({});
 
     useEffect(() => {
 
@@ -31,19 +30,17 @@ function RouterContainer() {
                 <Form
                     coordinates={coordinates}
                     setCoordinates={setCoordinates}
-                    propsRoute={propsRoute}
-                    map={globalMap}
-                    setMap={setMap}
-                    setpropsRoute={setpropsRoute}
+                    routeData={routeData}
+                    map={googleMap}
+                    setRouteData={setRouteData}
                 />
 
-                {isRouted &&
-
+                {routeData.distance && (
                     <footer>
-                        <p>Distância: 2 Km</p>
-                        <p>Tempo estimado: 6 minutos</p>
+                        <p>Distância: {routeData.distance} Km</p>
+                        <p>Tempo estimado: {routeData.time} Horas</p>
                     </footer>
-                }
+                )}
             </header>
 
             <main>

@@ -1,4 +1,4 @@
-.form-container {
+#form-container {
     flex: 2;
     margin: 1rem;
     background:var(--color-box-base);
@@ -6,14 +6,14 @@
     border: 1px solid var(--color-primary);
 }
 
-.buttons-container {
+#form-container section {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     margin: 2rem;
 }
 
-.buttons-container button {
+#form-container section button {
     height: 5rem;
     border-radius: 0.8rem;
     font: 700 2.0rem Archivo;
@@ -30,33 +30,30 @@
     transition: background-color 0.2s;
 }
 
-.buttons-container button:first-child {
+#form-container section button:first-child {
     margin-right: 2rem;
 }
 
-.buttons-container button.button-router {
+#form-container section button.button-router {
     flex: 3;
 }
 
-.buttons-container button.button-router .button-router-icon {
+#form-container section button.button-router .button-router-icon {
     margin-right: 1rem;
 }
 
-.buttons-container button.button-add {
+#form-container section button.button-add {
     flex: 1;
 }
 
-.buttons-container button.button-router:hover {
-    background: var(--color-primary-darker);
-}
-
-.buttons-container button.button-add:hover {
+#form-container section button.button-add:hover,
+#form-container section button.button-router:hover {
     background: var(--color-primary-darker);
 }
 
 @media(min-width: 900px) {
 
-    .form-container {
+    #form-container {
         flex: 3;
         margin: 1rem;
         background:var(--color-box-base);

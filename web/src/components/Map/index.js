@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { GoogleMap, withScriptjs, withGoogleMap } from 'react-google-maps';
 
 import './styles.css';

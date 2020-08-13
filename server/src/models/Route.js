@@ -4,12 +4,7 @@ class Route extends Model {
 
     static init(sequelize) {
 
-        super.init({
-            start_point: {
-                type: DataTypes.GEOGRAPHY,
-                allowNull: false
-            },
-        }, {
+        super.init({}, {
             sequelize
         });
     }

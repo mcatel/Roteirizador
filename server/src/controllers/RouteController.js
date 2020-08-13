@@ -1,16 +1,33 @@
-const Route = require('../models/Route')
+const Route = require('../models/Route');
+const Stop = require('../models/Stop');
 
 module.exports = {
     async store(req, res) {
-        const { start_point } = req.body;
+        const { coordinates } = req.body;
+        const route = await Route.create();
 
-        const route = await Route.create({ start_point });
+        coordinates.forEach(async coordinate => {
+            await Stop.create({
+                stop_point: {
+                    type: "point",
+                    coordinates: [
+                        coordinate.latitude,
+                        coordinate.longitude
+                    ]
+                },
+                route_id: route.id
+            });
+        });
 
         return res.json(route);
     },
 
     async index(req, res) {
-        const routes = await Route.findAll();
+        const routes = await Route.findAll({
+            include: {
+                association: 'stops'
+            }
+        });
 
         return res.json(routes);
     }
