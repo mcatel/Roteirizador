@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Form from '../../components/Form';
-import Map from '../../components/Map';
+import MapContainer from '../../components/MapContainer';
 import './styles.css';
 
 function RouterContainer() {
-    const [latitude, setLatitude] = useState('');
-    const [longitude, setLongitude] = useState('');
+    const [initialCenter, setInitialCenter] = useState({});
+
     const [googleMap, setGoogleMap] = useState('');
     const [coordinates, setCoordinates] = React.useState([]);
     const [routeData, setRouteData] = React.useState({});
@@ -15,8 +15,11 @@ function RouterContainer() {
         navigator.geolocation.getCurrentPosition(position => {
             const { latitude, longitude } = position.coords;
 
-            setLatitude(latitude);
-            setLongitude(longitude);
+            setInitialCenter({
+                lat: latitude,
+                lng: longitude
+            });
+
         }, err => {
             console.log(err);
         }, { timeout: 30000 });
@@ -44,9 +47,12 @@ function RouterContainer() {
             </header>
 
             <main>
-                <Map
-                    latitude={latitude}
-                    longitude={longitude}
+                <MapContainer
+                    initialCenter={initialCenter}
+                    coordinates={coordinates}
+                    setCoordinates={setCoordinates}
+                    map={googleMap}
+                    setMap={setGoogleMap}
                 />
             </main>
         </div>

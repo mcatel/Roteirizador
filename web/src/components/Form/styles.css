@@ -4,12 +4,11 @@
     background:var(--color-box-base);
     border-radius: 0.8rem;
     border: 1px solid var(--color-primary);
+    min-width: 25rem;
 }
 
 #form-container section {
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
     margin: 2rem;
 }
 
@@ -44,6 +43,7 @@
 
 #form-container section button.button-add {
     flex: 1;
+    min-width: 4rem;
 }
 
 #form-container section button.button-add:hover,
@@ -51,7 +51,31 @@
     background: var(--color-primary-darker);
 }
 
-@media(min-width: 900px) {
+#form-container .field-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#form-container .field-block button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 5rem;
+    margin-right: 1rem;
+    
+    height: 4rem;
+    width: 6rem;
+
+    border-radius: 0.8rem;
+    border: 0;
+
+    background: var(--color-danger);
+    color: var(--color-title-in-primary)
+}
+
+@media(min-width: 1000px) {
 
     #form-container {
         flex: 3;

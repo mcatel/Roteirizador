@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { FaRoad, FaPlus } from 'react-icons/fa';
-import Autocomplete from '../Autocomplete';
+import { FaPlus, FaRoad, FaTrash } from 'react-icons/fa';
 import saveRoute from '../../services/saveRoute';
-import calculateAndDisplayRoute from '../../services/calculateAndDisplayRoute';
-
+import calculateAndDisplayRoute from '../../utils/calculateAndDisplayRoute';
+import Autocomplete from '../Autocomplete';
 import './styles.css';
+
 
 function Form(props) {
     const { coordinates, setCoordinates, setRouteData, map } = props;
@@ -15,6 +15,18 @@ function Form(props) {
 
     function addNewField(name, label) {
         setFields([...fields, { name, label }]);
+    }
+
+    function removeField(index) {
+        const array = [];
+
+        fields.forEach((element, elementIndex) => {
+            if (elementIndex !== index) {
+                array.push(element);
+            }
+        });
+
+        setFields(array);
     }
 
     function handleSubmit(e) {
@@ -30,14 +42,25 @@ function Form(props) {
             {
                 fields.map((field, index) => {
                     return (
-                        <Autocomplete
-                            key={index}
-                            label={field.label}
-                            index={index}
-                            name={field.name + index}
-                            coordinates={coordinates}
-                            setCoordinates={setCoordinates}
-                        />
+                        <div key={index} className="field-block">
+                            <Autocomplete
+                                key={index}
+                                label={field.label}
+                                index={index}
+                                name={field.name + index}
+                                coordinates={coordinates}
+                                setCoordinates={setCoordinates}
+                                fields={fields}
+                                setFields={setFields}
+                            />
+
+                            {(index > 1) &&
+                                <button type="button" onClick={() => removeField(index)}>
+                                    <FaTrash />
+                                </button>
+                            }
+                        </div>
+
                     );
                 })
             }

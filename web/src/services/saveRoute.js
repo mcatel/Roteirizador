@@ -8,11 +8,11 @@ async function saveRoute(coordinates) {
             latitude: coordinate.lng
         }))
     }).then(response => {
-        console.log(response);
+        //console.log(response);
         //alert("Rota cadastrada com sucesso");
     }).catch(err => {
         console.log(err);
-        alert("Erro ao cadastrar rota");
+        alert("Erro ao salvar a rota no banco de dados");
     });
 }
 

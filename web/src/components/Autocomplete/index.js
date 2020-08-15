@@ -1,7 +1,7 @@
 import React from 'react';
 import GooglePlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-google-places-autocomplete';
 import 'react-google-places-autocomplete/dist/index.min.css';
-
+import apiKey from "../../utils/constants";
 import './styles.css';
 
 function Autocomplete(props) {
@@ -18,10 +18,12 @@ function Autocomplete(props) {
     return (
         <div className="input-block">
             <label htmlFor={name}>{label}</label>
+
             <GooglePlacesAutocomplete
+                loader={"Buscando..."}
                 name={name}
                 onSelect={handleSelect}
-                apiKey={"AIzaSyC09lOsJr2ZebDd2CHt_3X0JCoP-yrZUJk"}
+                apiKey={apiKey}
                 placeholder={"Digite um endereço"}
             />
         </div>

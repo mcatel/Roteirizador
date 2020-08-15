@@ -1,12 +1,14 @@
 #router-container {
     width: 95vw;
     height: 95vh;
+    max-width: 1200px;
     display: flex;
     flex-direction: column;
 }
 
 #router-container header {
     display: flex;
+    flex-direction: column;
 }
 
 #router-container header footer {
@@ -26,25 +28,20 @@
 }
 
 #router-container main {
-    display: flex;
     flex : 2;
-    min-height: 30rem;
-    justify-content: center;
-    align-items: center;
-    background-color:grey;
     margin: 1rem;
-    border-radius: 0.8rem;
 }
 
-@media(min-width: 900px) {
+@media(min-width: 1000px) {
     #router-container {
+        min-width: 1000px;
         width: 90vw;
         height: 90vh;
         display: flex;
         flex-direction: row;
         border-radius: 0.8rem;
     }
-
+    
     #router-container header {
         display: block;
         flex-direction: column;
