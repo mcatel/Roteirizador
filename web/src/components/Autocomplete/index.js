@@ -20,11 +20,11 @@ function Autocomplete(props) {
             <label htmlFor={name}>{label}</label>
 
             <GooglePlacesAutocomplete
-                loader={"Buscando..."}
+                loader="Buscando..."
                 name={name}
                 onSelect={handleSelect}
                 apiKey={apiKey}
-                placeholder={"Digite um endereço"}
+                placeholder="Informe uma parada"
             />
         </div>
     );

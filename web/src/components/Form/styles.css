@@ -75,6 +75,14 @@
     color: var(--color-title-in-primary)
 }
 
+#form-container legend {
+    font: 700 2.0rem Archivo;
+    margin-left: 2rem;
+    margin-top: 2rem;
+
+    color: var(--color-text-base);
+}
+
 @media(min-width: 1000px) {
 
     #form-container {

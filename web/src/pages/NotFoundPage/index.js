@@ -10,8 +10,8 @@ function NotFoundPage() {
         <div id="not-found-container">
 
             <main>
-                <strong>404</strong>
-                <p>Página não encontrada!</p>
+                <strong> 404 </strong>
+                <p> Página não encontrada </p>
 
                 <Link className="back" to="/">
                     <FaArrowLeft className="back-icon" />
@@ -23,7 +23,7 @@ function NotFoundPage() {
             <footer>
                 <img src={PageNotFound} alt="Página não encontrada" />
             </footer>
-        </div>
+        </div >
     );
 }
 
