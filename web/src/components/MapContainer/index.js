@@ -5,16 +5,16 @@ import apiKey from "../../utils/constants";
 import './styles.css';
 
 export class MapContainer extends Component {
-    state = {
-        map: {}
-    };
 
     handleMapReady = (mapPros, map) => {
+        const { setMap } = this.props;
+
         calculateAndDisplayRoute(map, this.props.coordinates);
+
         this.setState({
             map: map
         });
-        const { setMap } = this.props;
+
         setMap(map);
     };
 
@@ -53,6 +53,7 @@ export class MapContainer extends Component {
 export default GoogleApiWrapper({
     apiKey: apiKey,
     language: "pt-br",
+
     LoadingContainer: () => (
         <div className="loading">Carregando!</div>
     )

@@ -44,7 +44,7 @@ function Form(props) {
             {
                 fields.map((field, index) => {
                     return (
-                        <div key={index} className="field-block" Autocomplete="new-teste">
+                        <div key={index} className="field-block">
                             <Autocomplete
                                 key={index}
                                 label={field.label}

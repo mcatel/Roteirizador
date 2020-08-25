@@ -21,9 +21,10 @@ function RouterContainer() {
             });
 
         }, err => {
-            console.log(err);
-        }, { timeout: 30000 });
-
+            console.error(err);
+        }, {
+            timeout: 30000
+        });
     }, []);
 
     return (

@@ -42,7 +42,7 @@ function calculateAndDisplayRoute(map, coordinates, setpropsRoute) {
           time: (tempo / 3600).toFixed(2)
         });
       } else {
-        window.alert("Directions request failed due to " + status);
+        alert("Falha ao calcular rota: " + status);
       }
     }
   );
