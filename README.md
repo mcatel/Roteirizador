@@ -80,15 +80,13 @@ psql -U <Usuário>
 
 <Senha>
 
-\c roteirizador
+\c router
 
 CREATE EXTENSION Postgis;
 
 \q
 ```
->Se o comando **psql** não for reconhecido, adicione o diretório **/bin** de dentro do seu PostgreSQL as suas variáveis de ambiente.
-
-Mais informações podem ser encontradas [aqui](https://postgis.net/install/).
+>Se o comando **psql** não for reconhecido, adicione o diretório **/bin** de dentro do seu PostgreSQL as suas variáveis de ambiente. Mais informações podem ser encontradas [aqui](https://postgis.net/install/).
 
 ### Criação das tabelas:
 ```
@@ -97,7 +95,7 @@ yarn sequelize db:migrate
 
 ### Iniciando o servidor de desenvolvimento:
 ```
-yarn start
+yarn dev
 ```
 
 Após isso, a [API](http://localhost:3333) estará rodando na porta 3333.
@@ -121,3 +119,45 @@ Após isso, a [aplicação](http://localhost:3000) estará rodando na porta 3000
 
 ![Aplicação iniciada](./web/demo/app_started.png)
 
+# Testes
+
+Para execução dos testes, primeiramente será necessário criar um novo banco de dados.
+
+**Linux:**
+
+```
+yarn create_db_test
+```
+**Windows:**
+```
+yarn create_db_test_windows
+```
+
+Após isso, será necessário instalar a extensão Postgis, como é feito ao instalar o servidor.
+
+```
+psql -U <Usuário>
+
+<Senha>
+
+\c router_test
+
+CREATE EXTENSION Postgis;
+
+\q
+```
+>Se o comando **psql** não for reconhecido, adicione o diretório **/bin** de dentro do seu PostgreSQL as suas variáveis de ambiente. Mais informações podem ser encontradas [aqui](https://postgis.net/install/).
+
+## Executando os testes
+
+**Linux:**
+```
+yarn test
+```
+
+**Windows:**
+```
+yarn test_windows
+```
+
+![Suite de testes](./server/demo/test_suite.png)
