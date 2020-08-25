@@ -20,15 +20,5 @@ module.exports = {
         });
 
         return res.json(route);
-    },
-
-    async index(req, res) {
-        const routes = await Route.findAll({
-            include: {
-                association: 'stops'
-            }
-        });
-
-        return res.json(routes);
     }
 }
