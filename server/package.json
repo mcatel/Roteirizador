@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node src.server.js",
+    "start": "node src/server.js",
     "dev": "nodemon src/server.js --ignore __tests__",
     
     "create_db_test" : "NODE_ENV=test sequelize db:create",
