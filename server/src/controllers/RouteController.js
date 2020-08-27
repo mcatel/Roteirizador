@@ -8,29 +8,33 @@ module.exports = {
 
         try {
 
-            await connection.transaction(async (t) => {
-                const route = await Route.create(null, { transaction: t });
+            if (coordinates.length > 0) {
+                await connection.transaction(async (t) => {
+                    const route = await Route.create(null, { transaction: t });
 
-                coordinates.forEach(async coordinate => {
+                    coordinates.forEach(async coordinate => {
 
-                    await connection.transaction(async (t) => {
-                        await Stop.create({
-                            stop_point: {
-                                type: "point",
-                                coordinates: [
-                                    coordinate.latitude,
-                                    coordinate.longitude
-                                ]
-                            },
-                            route_id: route.id
-                        }, {
-                            transaction: t
+                        await connection.transaction(async (t) => {
+                            await Stop.create({
+                                stop_point: {
+                                    type: "point",
+                                    coordinates: [
+                                        coordinate.latitude,
+                                        coordinate.longitude
+                                    ]
+                                },
+                                route_id: route.id
+                            }, {
+                                transaction: t
+                            });
                         });
                     });
-                });
 
-                return res.json(route);
-            });
+                    return res.json(route);
+                });
+            } else {
+                throw new Error("teste");
+            }
 
         } catch (error) {
 

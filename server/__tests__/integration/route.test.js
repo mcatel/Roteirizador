@@ -16,4 +16,16 @@ describe("Router", () => {
 
         expect(response.status).toBe(200);
     });
+
+    it('must return a 400 error if there are no coordinates', async () => {
+        const response = await request(app).post('/routes').send();
+
+        expect(response.status).toBe(400);
+    });
+
+    it('return a 400 error when sending an empty array', async () => {
+        const response = await request(app).post('/routes').send({ coordinates: [] });
+
+        expect(response.status).toBe(400);
+    });
 });
