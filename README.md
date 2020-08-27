@@ -68,6 +68,18 @@ git clone https://github.com/mcatel/Roteirizador
 cd server
 yarn install
 ```
+### Configuração do banco de dados:
+Nos arquivos **.env** e **.env.test** será necessário adicionar os parâmetros de conexão com o banco de dados.
+
+Exemplo:
+```
+DB_DIALECT=postgres
+DB_HOST=localhost
+DB_USER=postgres
+DB_PASS=postgres
+DB_NAME=router
+```
+>Para o arquivo **.env.test** utilize um DB_NAME diferente do utilizado no arquivo **.env**, pois esse será seu banco de dados de teste.
 
 ### Criação do banco de dados:
 ```
