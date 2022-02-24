@@ -1,6 +1,7 @@
 {
   "scripts": {
     "heroku-prebuild": "cd server; export NPM_CONFIG_PRODUCTION=false; export NODE_ENV=; NPM_CONFIG_PRODUCTION=false NODE_ENV=development npm install --only=dev --dev",
+    "start": "cd server; npm run start",
     "heroku-postbuild": "cd server; export NPM_CONFIG_PRODUCTION=true; export NODE_ENV=production;"
   }
 }
