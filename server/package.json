@@ -7,6 +7,7 @@
     "dev": "nodemon -w src --exec \"babel-node src --presets env\"",
     "build": "babel src -s -D -d dist --presets env",
     "start": "node dist",
+    "lint": "eslint src",
 
     "create_db_test": "NODE_ENV=test sequelize db:create",
     "create_db_test_windows": "SET NODE_ENV=test& sequelize db:create",
@@ -32,6 +33,9 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
     "jest": "^26.4.2",
     "nodemon": "^2.0.4",
     "sequelize-cli": "^6.2.0",
