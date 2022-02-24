@@ -4,19 +4,22 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js --ignore __tests__",
+    "dev": "nodemon -w src --exec \"babel-node src --presets env\"",
+    "build": "babel src -s -D -d dist --presets env",
+    "start": "node dist",
+
+    "create_db_test": "NODE_ENV=test sequelize db:create",
+    "create_db_test_windows": "SET NODE_ENV=test& sequelize db:create",
     
-    "create_db_test" : "NODE_ENV=test sequelize db:create",
-    "create_db_test_windows" : "SET NODE_ENV=test& sequelize db:create",
-
     "pretest": "NODE_ENV=test sequelize db:migrate",
-    "test": "NODE_ENV=test jest",
+    "test": "NODE_ENV=test jest --forceExit",
     "posttest": "NODE_ENV=test sequelize db:migrate:undo:all",
-
+    
     "pretest_windows": "SET NODE_ENV=test& sequelize db:migrate",
-    "test_windows": "SET NODE_ENV=test& jest",
-    "posttest_windows": "SET NODE_ENV=test& sequelize db:migrate:undo:all"
+    "test_windows": "SET NODE_ENV=test& jest --forceExit",
+    "posttest_windows": "SET NODE_ENV=test& sequelize db:migrate:undo:all",
+    
+    "test_ignore_migrations": "NODE_ENV=test jest --forceExit"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -27,6 +30,8 @@
     "sequelize": "^6.3.4"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "jest": "^26.4.2",
     "nodemon": "^2.0.4",
     "sequelize-cli": "^6.2.0",

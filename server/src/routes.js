@@ -1,8 +1,7 @@
-const express = require('express');
-const routes = express.Router();
+import { Router } from 'express';
+import RouteController from './controllers/RouteController';
 
-const RouteController = require('./controllers/RouteController');
-
+const routes = Router();
 routes.post('/routes', RouteController.store);
 
-module.exports = routes;
+export default routes;

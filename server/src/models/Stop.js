@@ -1,9 +1,8 @@
-const { DataTypes, Model } = require('sequelize');
+import { DataTypes, Model } from 'sequelize';
 
 class Stop extends Model {
 
     static init(sequelize) {
-
         super.init({
             stop_point: {
                 type: DataTypes.GEOGRAPHY,
@@ -22,4 +21,4 @@ class Stop extends Model {
     }
 }
 
-module.exports = Stop;
+export default Stop;

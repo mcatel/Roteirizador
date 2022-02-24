@@ -1,46 +1,42 @@
-const Route = require('../models/Route');
-const Stop = require('../models/Stop');
-const connection = require('../database/connection');
+import Route from '../models/Route';
+import Stop from '../models/Stop';
+import connection from '../database/connection';
 
-module.exports = {
-    async store(req, res) {
-        const { coordinates } = req.body;
+const store = async (req, res) => {
+    const { coordinates } = req.body;
 
-        try {
+    try {
+        if (coordinates && coordinates.length > 0) {
+            const route = await connection.transaction((t) => Route.create(null, { transaction: t }));
 
-            if (coordinates.length > 0) {
-                await connection.transaction(async (t) => {
-                    const route = await Route.create(null, { transaction: t });
-
-                    coordinates.forEach(async coordinate => {
-
-                        await connection.transaction(async (t) => {
-                            await Stop.create({
-                                stop_point: {
-                                    type: "point",
-                                    coordinates: [
-                                        coordinate.latitude,
-                                        coordinate.longitude
-                                    ]
-                                },
-                                route_id: route.id
-                            }, {
-                                transaction: t
-                            });
-                        });
+            coordinates.map((coord) => {
+                return connection.transaction((t) => {
+                    return Stop.create({
+                        stop_point: {
+                            type: "point",
+                            coordinates: [
+                                coord.latitude,
+                                coord.longitude
+                            ]
+                        },
+                        route_id: route.id
+                    }, {
+                        transaction: t
                     });
-
-                    return res.json(route);
                 });
-            } else {
-                throw new Error("teste");
-            }
+            });
 
-        } catch (error) {
-
+            return res.status(200).json(route);
+        } else {
             return res.status(400).json({
-                error: "Unexpected error while creating new route"
+                error: "Nenhuma coordenada encontrada."
             });
         }
+    } catch (error) {
+        return res.status(400).json({
+            error: "Unexpected error while creating new route"
+        });
     }
-}
+};
+
+export default { store };
