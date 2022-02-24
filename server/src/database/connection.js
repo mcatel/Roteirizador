@@ -1,10 +1,9 @@
-const { Sequelize } = require('sequelize');
+import { Sequelize } from 'sequelize';
+import config from './config';
+import Route from '../models/Route';
+import Stop from '../models/Stop';
 
-const dbConfig = require('./config');
-const Route = require('../models/Route');
-const Stop = require('../models/Stop');
-
-const connection = new Sequelize(dbConfig);
+const connection = new Sequelize(config);
 
 Route.init(connection);
 Stop.init(connection);
@@ -12,4 +11,4 @@ Stop.init(connection);
 Stop.associate(connection.models);
 Route.associate(connection.models);
 
-module.exports = connection;
+export default connection;

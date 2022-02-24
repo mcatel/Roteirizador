@@ -1,9 +1,8 @@
-const { DataTypes, Model } = require('sequelize');
+import { Model } from 'sequelize';
 
 class Route extends Model {
 
     static init(sequelize) {
-
         super.init({}, {
             sequelize
         });
@@ -17,4 +16,4 @@ class Route extends Model {
     }
 }
 
-module.exports = Route;
+export default Route;

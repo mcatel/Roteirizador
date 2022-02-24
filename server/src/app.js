@@ -1,8 +1,9 @@
-const cors = require('cors');
-const express = require('express');
-const routes = require('./routes');
-require('./database/connection');
-require('dotenv').config({
+import cors from 'cors';
+import express from 'express';
+import routes from './routes';
+import dotenv from 'dotenv';
+
+dotenv.config({
     path: process.env.NODE_ENV === "test" ? ".env.test" : ".env"
 });
 
@@ -12,4 +13,4 @@ app.use(cors());
 app.use(express.json());
 app.use(routes);
 
-module.exports = app;
+export default app;
