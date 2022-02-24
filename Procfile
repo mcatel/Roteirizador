@@ -1,1 +1,1 @@
-web: node run build && node run start
+web: cd server && node run build && node run start
