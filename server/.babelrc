@@ -1,9 +1,10 @@
 {
   "presets": [
-    ["env", {
+    ["@babel/preset-env", {
       "targets": {
-        "node": "current"
+        "node": "14.17.0"
       }
     }]
-  ]
+  ],
+  "plugins": ["@babel/plugin-transform-spread", "@babel/plugin-proposal-object-rest-spread"]
 }

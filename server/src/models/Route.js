@@ -1,18 +1,17 @@
 import { Model } from 'sequelize';
 
-class Route extends Model {
+export default class Route extends Model {
   static init(sequelize) {
-    super.init({}, {
+    return super.init({}, {
+      tableName: 'routes',
       sequelize,
     });
   }
 
   static associate(models) {
-    this.hasMany(models.Stop, {
+    this.stopAssociaton = models.Route.hasMany(models.Stop, {
       foreignKey: 'route_id',
       as: 'stops',
     });
   }
 }
-
-export default Route;

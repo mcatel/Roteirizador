@@ -7,22 +7,21 @@ const store = async (req, res) => {
 
   try {
     if (coordinates && coordinates.length > 0) {
-      const route = await connection.transaction((t) => Route.create(null, { transaction: t }));
+      const { dataValues: route } = await connection.transaction(
+        (t) => Route.create(null, { transaction: t }),
+      );
 
-      coordinates.map((coord) => connection.transaction((t) => Stop.create({
-        stop_point: {
-          type: 'point',
-          coordinates: [
-            coord.latitude,
-            coord.longitude,
-          ],
-        },
-        route_id: route.id,
-      }, {
-        transaction: t,
-      })));
+      const stops = await Promise.all(
+        coordinates.map((coord) => connection.transaction((t) => Stop.create({
+          latitude: coord.latitude,
+          longitude: coord.longitude,
+          route_id: route.id,
+        }, {
+          transaction: t,
+        }))),
+      );
 
-      return res.status(200).json(route);
+      return res.status(200).json({ ...route, stops });
     }
     return res.status(400).json({
       error: 'Nenhuma coordenada encontrada.',
