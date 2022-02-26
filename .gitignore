@@ -26,3 +26,5 @@ yarn-error.log*
 */.env
 */.env.test
 */dist
+*/__tests__/database
+*/database.sqlite
