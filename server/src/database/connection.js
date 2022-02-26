@@ -5,10 +5,13 @@ import Stop from '../models/Stop';
 
 const connection = new Sequelize(config);
 
-Route.init(connection);
-Stop.init(connection);
+const models = {
+  Route: Route.init(connection),
+  Stop: Stop.init(connection),
+};
 
-Stop.associate(connection.models);
-Route.associate(connection.models);
+Object.values(models).filter(
+  (model) => typeof model.associate === 'function',
+).forEach((model) => model.associate(models));
 
 export default connection;

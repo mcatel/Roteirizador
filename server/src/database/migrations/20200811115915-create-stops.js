@@ -16,8 +16,12 @@ module.exports = {
         onDelete: 'CASCADE',
       },
     },
-    stop_point: {
-      type: Sequelize.GEOGRAPHY('POINT'),
+    latitude: {
+      type: Sequelize.DOUBLE,
+      allowNull: false,
+    },
+    longitude: {
+      type: Sequelize.DOUBLE,
       allowNull: false,
     },
     created_at: {
