@@ -24,8 +24,7 @@
     "express": "^4.17.1",
     "pg": "^8.3.0",
     "pg-hstore": "^2.3.3",
-    "sequelize": "^6.3.4",
-    "sqlite3": "^5.0.2"
+    "sequelize": "^6.3.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.6",
@@ -41,6 +40,7 @@
     "jest": "^26.4.2",
     "nodemon": "^2.0.4",
     "sequelize-cli": "^6.2.0",
+    "sqlite3": "^5.0.2",
     "supertest": "^4.0.2"
   }
 }
