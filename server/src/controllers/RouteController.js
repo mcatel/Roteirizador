@@ -27,10 +27,30 @@ const store = async (req, res) => {
       error: 'Nenhuma coordenada encontrada.',
     });
   } catch (error) {
-    return res.status(400).json({
+    return res.status(500).json({
       error: 'Unexpected error while creating new route',
     });
   }
 };
 
-export default { store };
+const search = async (req, res) => {
+  try {
+    const routes = await connection.transaction(
+      (t) => Route.findAll({}, { transaction: t }),
+    );
+
+    if (routes && routes.length) {
+      return res.status(200).json({ routes });
+    }
+
+    return res.status(200).json({
+      error: 'Nenhuma rota encontrada.',
+    });
+  } catch (error) {
+    return res.status(500).json({
+      error: 'Unexpected error while searching routes',
+    });
+  }
+};
+
+export default { store, search };
