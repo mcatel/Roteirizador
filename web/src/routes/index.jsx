@@ -6,7 +6,7 @@ import Router from '../pages/Router';
 import NotFoundPage from '../pages/NotFoundPage';
 
 const Routes = ({ gmapsLoaded }) => (
-  <BrowserRouter>
+  <BrowserRouter basename={process.env.PUBLIC_URL}>
     <Switch>
       <Route path="/router" exact>
         <Router

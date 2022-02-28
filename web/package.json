@@ -2,6 +2,7 @@
   "name": "web",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://mcatel.github.io/Roteirizador/web/public",
   "dependencies": {
     "@react-google-maps/api": "^2.7.0",
     "axios": "^0.19.2",
@@ -17,7 +18,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": [
     ">0.2%",
@@ -26,12 +29,15 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "add": "^2.0.6",
     "babel-eslint": "^10.1.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-better-styled-components": "^1.1.2",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.24.0",
-    "eslint-plugin-react-hooks": "^4.2.0"
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "gh-pages": "^3.2.3",
+    "yarn": "^1.22.17"
   }
 }
