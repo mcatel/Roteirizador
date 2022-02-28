@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/Roteirizador/web/public/static/css/main.09d90ca3.chunk.css",
-    "main.js": "/Roteirizador/web/public/static/js/main.2e1c31cd.chunk.js",
-    "main.js.map": "/Roteirizador/web/public/static/js/main.2e1c31cd.chunk.js.map",
-    "runtime-main.js": "/Roteirizador/web/public/static/js/runtime-main.5d901659.js",
-    "runtime-main.js.map": "/Roteirizador/web/public/static/js/runtime-main.5d901659.js.map",
-    "static/js/2.18e98b6a.chunk.js": "/Roteirizador/web/public/static/js/2.18e98b6a.chunk.js",
-    "static/js/2.18e98b6a.chunk.js.map": "/Roteirizador/web/public/static/js/2.18e98b6a.chunk.js.map",
-    "index.html": "/Roteirizador/web/public/index.html",
-    "precache-manifest.95282c404b50ab4400c7cae521ba7bb3.js": "/Roteirizador/web/public/precache-manifest.95282c404b50ab4400c7cae521ba7bb3.js",
-    "service-worker.js": "/Roteirizador/web/public/service-worker.js",
-    "static/css/main.09d90ca3.chunk.css.map": "/Roteirizador/web/public/static/css/main.09d90ca3.chunk.css.map",
-    "static/js/2.18e98b6a.chunk.js.LICENSE.txt": "/Roteirizador/web/public/static/js/2.18e98b6a.chunk.js.LICENSE.txt",
-    "static/media/travolta-crunched.gif": "/Roteirizador/web/public/static/media/travolta-crunched.2ea66c06.gif"
+    "main.css": "/Roteirizador/static/css/main.09d90ca3.chunk.css",
+    "main.js": "/Roteirizador/static/js/main.d9902e48.chunk.js",
+    "main.js.map": "/Roteirizador/static/js/main.d9902e48.chunk.js.map",
+    "runtime-main.js": "/Roteirizador/static/js/runtime-main.cee8fa88.js",
+    "runtime-main.js.map": "/Roteirizador/static/js/runtime-main.cee8fa88.js.map",
+    "static/js/2.18e98b6a.chunk.js": "/Roteirizador/static/js/2.18e98b6a.chunk.js",
+    "static/js/2.18e98b6a.chunk.js.map": "/Roteirizador/static/js/2.18e98b6a.chunk.js.map",
+    "index.html": "/Roteirizador/index.html",
+    "precache-manifest.50da526678d1426aa0ed00a7114eb20e.js": "/Roteirizador/precache-manifest.50da526678d1426aa0ed00a7114eb20e.js",
+    "service-worker.js": "/Roteirizador/service-worker.js",
+    "static/css/main.09d90ca3.chunk.css.map": "/Roteirizador/static/css/main.09d90ca3.chunk.css.map",
+    "static/js/2.18e98b6a.chunk.js.LICENSE.txt": "/Roteirizador/static/js/2.18e98b6a.chunk.js.LICENSE.txt",
+    "static/media/travolta-crunched.gif": "/Roteirizador/static/media/travolta-crunched.2ea66c06.gif"
   },
   "entrypoints": [
-    "static/js/runtime-main.5d901659.js",
+    "static/js/runtime-main.cee8fa88.js",
     "static/js/2.18e98b6a.chunk.js",
     "static/css/main.09d90ca3.chunk.css",
-    "static/js/main.2e1c31cd.chunk.js"
+    "static/js/main.d9902e48.chunk.js"
   ]
 }
