@@ -134,6 +134,24 @@ Após isso, a [aplicação](http://localhost:3000) estará rodando na porta 3000
 ![Aplicação iniciada](./web/demo/app_started.png)
 
 
+## Maps
+Para poder visualizar o mapa completo e utilizar o preenchimento automático nos campos de rota, é necessário obter uma **API_KEY** do Google Maps. Mais informações [aqui](https://cloud.google.com/docs/authentication/api-keys).
+
+Após isso, deve ser criado um arquivo **.env** na raíz do projeto, seguindo o exemplo **(.env.example)**
+
+## Configuração da interface web:
+Crie o arquivo **.env** na raiz do projeto utilizando o exemplo abaixo. Será necessário modificar os parâmetros para a conexão com o seu servidor.
+
+Exemplo:
+```
+REACT_APP_BACKEND_URL_PROD='https://roteirizador.example.com/'
+REACT_APP_BACKEND_URL_LOCAL='http://localhost:3333'
+REACT_APP_GOOGLE_MAPS_API_KEY='SUA_API_KEY'
+```
+
+> Além disso, para poder visualizar o mapa completo e utilizar o preenchimento automático nos campos de rota, é necessário obter uma **API_KEY** do Google Maps. Mais informações [aqui](https://cloud.google.com/docs/authentication/api-keys).
+
+
 # Testes
 
 Para execução dos testes, primeiramente será necessário criar um novo banco de dados.
