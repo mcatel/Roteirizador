@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { FaPlus, FaRoad, FaTrash } from 'react-icons/fa';
+import {
+  FaPlus, FaRoad, FaTrash,
+} from 'react-icons/fa';
 import saveRoute from '../../services/saveRoute';
 import calculateAndDisplayRoute from '../../utils/calculateAndDisplayRoute';
 import Autocomplete from '../Autocomplete';
@@ -7,7 +9,11 @@ import './styles.css';
 
 function Form(props) {
   const {
-    coordinates, setCoordinates, setRouteData, map,
+    coordinates,
+    setCoordinates,
+    setRouteData,
+    map,
+    gmapsLoaded,
   } = props;
 
   const [fields, setFields] = useState([
@@ -20,26 +26,28 @@ function Form(props) {
   }
 
   function removeField(index) {
-    const array = [];
-
-    fields.forEach((element, elementIndex) => {
-      if (elementIndex !== index) {
-        array.push(element);
-      }
-    });
-
+    const array = fields.filter((_, elementIndex) => elementIndex !== index);
+    setCoordinates(coordinates.filter((_, coordIndex) => index !== coordIndex));
     setFields(array);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    saveRoute(coordinates);
-    calculateAndDisplayRoute(map, coordinates, setRouteData);
+    if (coordinates && coordinates.length > 1) {
+      saveRoute(coordinates);
+      calculateAndDisplayRoute(map, coordinates, setRouteData);
+    } else {
+      setCoordinates([]);
+      calculateAndDisplayRoute(map, [], setRouteData);
+    }
+  }
+
+  if (!gmapsLoaded) {
+    return <p>Mapa não carregado</p>;
   }
 
   return (
-
     <form onSubmit={handleSubmit} id="form-container">
       <legend>Rotas</legend>
 
@@ -53,19 +61,17 @@ function Form(props) {
             setCoordinates={setCoordinates}
           />
 
-          {(index > 1)
-              && (
-                <button type="button" onClick={() => removeField(index)}>
-                  <FaTrash />
-                </button>
-              )}
+          {(index > 1) && (
+            <button type="button" onClick={() => removeField(index)}>
+              <FaTrash />
+            </button>
+          )}
         </div>
-
       ))}
 
       <section>
         <button type="submit" className="button-router">
-          <FaRoad className="button-router-icon" />
+          <FaRoad className="button-icon" />
           Roteirizar
         </button>
 
@@ -76,6 +82,7 @@ function Form(props) {
         >
           <FaPlus />
         </button>
+
       </section>
     </form>
   );

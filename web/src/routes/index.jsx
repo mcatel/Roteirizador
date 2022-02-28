@@ -5,21 +5,24 @@ import {
 import Router from '../pages/Router';
 import NotFoundPage from '../pages/NotFoundPage';
 
-function Routes() {
-  return (
-    <BrowserRouter>
-      <Switch>
-        <Route path="/router" exact component={Router} />
-        <Route path="/404" exact component={NotFoundPage} />
+const Routes = ({ gmapsLoaded }) => (
+  <BrowserRouter>
+    <Switch>
+      <Route path="/router" exact>
+        <Router
+          gmapsLoaded={gmapsLoaded}
+        />
+      </Route>
 
-        <Route path="/" exact>
-          <Redirect to="/router" />
-        </Route>
+      <Route path="/404" exact component={NotFoundPage} />
 
-        <Redirect to="/404" />
-      </Switch>
-    </BrowserRouter>
-  );
-}
+      <Route path="/" exact>
+        <Redirect to="/router" />
+      </Route>
+
+      <Redirect to="/404" />
+    </Switch>
+  </BrowserRouter>
+);
 
 export default Routes;

@@ -37,7 +37,7 @@
     flex: 3;
 }
 
-#form-container section button.button-router .button-router-icon {
+#form-container section button .button-icon {
     margin-right: 1rem;
 }
 
