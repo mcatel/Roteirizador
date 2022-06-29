@@ -1,18 +1,9 @@
 import { Sequelize } from 'sequelize';
-import Route from '../models/Route';
-import Stop from '../models/Stop';
+import Route from '../../models/Route';
+import Stop from '../../models/Stop';
+import config from '../../config/config';
 
-require('dotenv').config({
-  path: process.env.NODE_ENV === 'test' ? '.env.test' : '.env',
-});
-
-const connection = new Sequelize(process.env.DATABASE_URL, {
-  define: {
-    timestamps: true,
-    underscored: true,
-    underscoredAll: true,
-  },
-});
+const connection = new Sequelize(config);
 
 const models = {
   Route: Route.init(connection),

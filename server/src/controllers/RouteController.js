@@ -1,5 +1,5 @@
-import Route from '../models/Route';
-import Stop from '../models/Stop';
+import Route from '../../models/Route';
+import Stop from '../../models/Stop';
 import connection from '../database/connection';
 
 const store = async (req, res) => {
