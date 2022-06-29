@@ -83,12 +83,12 @@ Crie os arquivos **.env** e **.env.test** na raiz do projeto utilizando o exempl
 
 Exemplo:
 ```
+PORT=3333
 DB_DIALECT=postgres
 DB_HOST=localhost
 DB_USER=postgres
 DB_PASS=postgres
 DB_NAME=router
-DB_STORAGE=src/database/database.sqlite
 ```
 >Para o arquivo **.env.test** utilize um DB_NAME diferente do utilizado no arquivo **.env**, pois esse será seu banco de dados de teste.
 
