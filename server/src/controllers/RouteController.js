@@ -47,7 +47,6 @@ const search = async (req, res) => {
       error: 'Nenhuma rota encontrada.',
     });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({
       error: 'Unexpected error while searching routes',
     });
