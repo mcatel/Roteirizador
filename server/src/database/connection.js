@@ -3,6 +3,8 @@ import Route from './models/Route';
 import Stop from './models/Stop';
 import config from './config/config';
 
+console.log(config);
+
 const connection = new Sequelize(config);
 
 const models = {
