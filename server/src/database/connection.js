@@ -3,16 +3,23 @@ import Route from './models/Route';
 import Stop from './models/Stop';
 import config from './config/config';
 
-console.log(config);
-const connection = new Sequelize(config);
+let connection = null;
+
+if (config.use_env_variable) {
+  connection = new Sequelize(process.env[config.use_env_variable], config);
+} else {
+  connection = new Sequelize(config);
+}
+
+const sequelizeConnection = connection;
 
 const models = {
-  Route: Route.init(connection),
-  Stop: Stop.init(connection),
+  Route: Route.init(sequelizeConnection),
+  Stop: Stop.init(sequelizeConnection),
 };
 
 Object.values(models).filter(
   (model) => typeof model.associate === 'function',
 ).forEach((model) => model.associate(models));
 
-export default connection;
+export default sequelizeConnection;

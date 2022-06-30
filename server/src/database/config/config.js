@@ -3,14 +3,15 @@ require('dotenv').config({
 });
 
 const getDatabaseConfig = () => {
-  console.log(process.env.DATABASE_URL);
-
   if (process.env.DATABASE_URL) {
     return {
       use_env_variable: 'DATABASE_URL',
       dialect: 'postgres',
       dialectOptions: {
-        ssl: true,
+        ssl: {
+          require: true,
+          rejectUnauthorized: false,
+        },
       },
     };
   }
