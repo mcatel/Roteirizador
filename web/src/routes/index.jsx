@@ -1,26 +1,21 @@
 import React from 'react';
 import {
-  BrowserRouter, Route, Redirect, Switch,
+  HashRouter, Route, Switch
 } from 'react-router-dom';
 import Router from '../pages/Router';
 import NotFoundPage from '../pages/NotFoundPage';
 
 const Routes = ({ gmapsLoaded }) => (
-  <BrowserRouter basename="/roteirizador">
+  <HashRouter basename={process.env.PUBLIC_URL}>
     <Switch>
       <Route path="/" exact>
         <Router
           gmapsLoaded={gmapsLoaded}
         />
       </Route>
-
-      <Route path="/404" exact>
-        <NotFoundPage />
-      </Route>
-
-      <Redirect to="/404" />
+      <Route component={NotFoundPage} />
     </Switch>
-  </BrowserRouter>
+  </HashRouter>
 );
 
 export default Routes;
