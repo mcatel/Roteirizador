@@ -2,7 +2,7 @@
   "name": "web",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://mcatel.github.io/Roteirizador",
+  "homepage": "https://roteirizador.catel.dev",
   "dependencies": {
     "@react-google-maps/api": "^2.7.0",
     "axios": "^0.19.2",

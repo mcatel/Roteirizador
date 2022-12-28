@@ -8,16 +8,14 @@ import NotFoundPage from '../pages/NotFoundPage';
 const Routes = ({ gmapsLoaded }) => (
   <BrowserRouter basename={process.env.PUBLIC_URL}>
     <Switch>
-      <Route path="/router" exact>
+      <Route path="/" exact>
         <Router
           gmapsLoaded={gmapsLoaded}
         />
       </Route>
 
-      <Route path="/404" exact component={NotFoundPage} />
-
-      <Route path="/" exact>
-        <Redirect to="/router" />
+      <Route path="/404" exact>
+        <NotFoundPage />
       </Route>
 
       <Redirect to="/404" />
